@@ -2,8 +2,21 @@
 <html>
 <head>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <link rel="stylesheet"
-          href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css"/>
+    <script type="text/javascript">
+        function changeCSS(cssFile, cssLinkIndex) {
+
+            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+            var newlink = document.createElement("link");
+            newlink.setAttribute("rel", "stylesheet");
+            newlink.setAttribute("type", "text/css");
+            newlink.setAttribute("href", cssFile);
+
+            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+        }
+    </script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>SEKA</title>
@@ -14,19 +27,50 @@
     <header class="mdl-layout__header mdl-layout__header--scroll">
         <div class="mdl-layout__header-row">
             <div class="mdl-layout-spacer"></div>
-            <button id="demo-menu-lower-left"
-                    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            <button id="demo-menu-lower-left1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                Themes
+            </button>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">
+
+                    <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
+                        for="demo-menu-lower-left1">
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);" class="mdl-menu__item">Default</li>
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);" class="mdl-menu__item">Theme 1</li>
+                        <li id="theme2" class="mdl-menu__item">Theme 2</li>
+                    </ul>
+                </a>
+            </nav>
+            <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Filters
             </button>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">
 
-                    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
                         for="demo-menu-lower-left">
-                        <li class="mdl-menu__item">Some Action</li>
-                        <li class="mdl-menu__item">Another Action</li>
-                        <li disabled class="mdl-menu__item">Disabled Action</li>
-                        <li class="mdl-menu__item">Yet Another Action</li>
+                        <li>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-1">
+                                <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label">DuckDuckGo</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-2">
+                                <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label">Facebook</span>
+                            </label>
+
+                        <li>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-3">
+                                <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label">Twitter</span>
+                            </label>
+                        </li>
+
                     </ul>
                 </a>
             </nav>

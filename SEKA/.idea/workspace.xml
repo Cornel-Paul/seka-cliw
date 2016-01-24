@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/indexMobile.html" changelist="601b320d-fc85-4fab-a29e-73da5d2f6426" time="1452983252586" ignored="false" />
     <file path="/Mobile.css" changelist="601b320d-fc85-4fab-a29e-73da5d2f6426" time="1452980156589" ignored="false" />
-    <file path="/indexWeb.html" changelist="601b320d-fc85-4fab-a29e-73da5d2f6426" time="1453641932713" ignored="false" />
+    <file path="/indexWeb.html" changelist="601b320d-fc85-4fab-a29e-73da5d2f6426" time="1453657035972" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,16 @@
       <file leaf-file-name="indexWeb.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/indexWeb.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="20" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.6857639">
+            <state line="4" column="42" selection-start="168" selection-end="168" vertical-scroll-proportion="0.030195381">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexJS.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indexJS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -65,6 +74,7 @@
       <list>
         <option value="$PROJECT_DIR$/Mobile.css" />
         <option value="$PROJECT_DIR$/indexMobile.html" />
+        <option value="$PROJECT_DIR$/indexJS.js" />
         <option value="$PROJECT_DIR$/indexWeb.html" />
       </list>
     </option>
@@ -261,13 +271,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mobile.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indexMobile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="4" selection-start="68" selection-end="416" vertical-scroll-proportion="0.0">
@@ -275,9 +278,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/indexJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mobile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/indexWeb.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="20" selection-start="1465" selection-end="1465" vertical-scroll-proportion="0.6857639">
+        <state line="4" column="42" selection-start="168" selection-end="168" vertical-scroll-proportion="0.030195381">
           <folding />
         </state>
       </provider>

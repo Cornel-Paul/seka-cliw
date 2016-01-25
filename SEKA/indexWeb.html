@@ -4,19 +4,6 @@
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <link rel="stylesheet" type="text/css"
           href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css"/>
-    <script type="text/javascript">
-        function changeCSS(cssFile, cssLinkIndex) {
-
-            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-            var newlink = document.createElement("link");
-            newlink.setAttribute("rel", "stylesheet");
-            newlink.setAttribute("type", "text/css");
-            newlink.setAttribute("href", cssFile);
-
-            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-        }
-    </script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>SEKA</title>
@@ -77,5 +64,18 @@
         </div>
     </header>
 </div>
+    <script type="text/javascript">
+        function changeCSS(cssFile, cssLinkIndex) {
+
+            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+            var newlink = document.createElement("link");
+            newlink.setAttribute("rel", "stylesheet");
+            newlink.setAttribute("type", "text/css");
+            newlink.setAttribute("href", cssFile);
+
+            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+        }
+    </script>
 </body>
 </html>

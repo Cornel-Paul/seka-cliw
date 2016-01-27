@@ -24,9 +24,10 @@
                         <input class="mdl-textfield__input" type="text" id="sample1">
                         <label class="mdl-textfield__label" for="sample1">Search </label>
                     </div>
-                    <label class="mdl-button mdl-js-button mdl-button--icon">
-                        <i class="material-icons">search</i>
+                     <label class="mdl-button mdl-js-button mdl-button--icon">
+                         <i class="material-icons">search</i>
                     </label>
+
                 </form>
                 <div class="option">
                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
@@ -54,16 +55,21 @@
 
                     <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
                         for="demo-menu-lower-left1">
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);"
-                            class="mdl-menu__item">Default
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);" class="mdl-menu__item">
+                            <a> Default</a>
+
                         </li>
                         <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);"
-                            class="mdl-menu__item">Theme 1
+                            class="mdl-menu__item">
+                            <a>Theme 1</a>
                         </li>
-                        <li id="theme2" class="mdl-menu__item">Theme 2</li>
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_orange-light_green.min.css',0);" class="mdl-menu__item">
+                            <a>Theme 2</a>
+                        </li>
                     </ul>
                 </a>
             </nav>
+
             <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Filters
             </button>
@@ -101,5 +107,20 @@
         </div>
     </header>
 </div>
+<script type="text/javascript">
+    function changeCSS(cssFile, cssLinkIndex) {
+
+        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+        var newlink = document.createElement("link");
+        newlink.setAttribute("rel", "stylesheet");
+        newlink.setAttribute("type", "text/css");
+        newlink.setAttribute("href", cssFile);
+
+        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+
+    }
+</script>
+
 </body>
 </html>

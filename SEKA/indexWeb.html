@@ -26,16 +26,21 @@
 
                     <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
                         for="demo-menu-lower-left1">
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);"
-                            class="mdl-menu__item">Default
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);" class="mdl-menu__item">
+                            <a> Default</a>
+
                         </li>
                         <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);"
-                            class="mdl-menu__item">Theme 1
+                            class="mdl-menu__item">
+                            <a>Theme 1</a>
                         </li>
-                        <li id="theme2" class="mdl-menu__item">Theme 2</li>
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_orange-light_green.min.css',0);" class="mdl-menu__item">
+                            <a>Theme 2</a>
+                        </li>
                     </ul>
                 </a>
             </nav>
+
             <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Filters
             </button>
@@ -94,7 +99,7 @@
                 <span class="mdl-radio__label">Images</span>
             </label>
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="1" checked>
+                <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
                 <span class="mdl-radio__label">Videos</span>
             </label>
         </div>
@@ -111,8 +116,10 @@
         newlink.setAttribute("href", cssFile);
 
         document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+
     }
 </script>
+
 <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">
         <div class="mdl-logo">Descriptie</div>

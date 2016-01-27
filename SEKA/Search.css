@@ -1,0 +1,10 @@
+.main{
+    height: 605px;
+    width: 100%;
+
+}
+.results{
+    float: inherit;
+    padding-top: 100px;
+    padding-left: 50px;
+}

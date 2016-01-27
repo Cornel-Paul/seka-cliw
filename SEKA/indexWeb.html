@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head onload="loadCss()">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-          href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.yellow-light_green.min.css"/>
+    <script src="indexJS.js"></script>
+
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" type="text/css" href="Web.css">
     <title>SEKA</title>
 </head>
-<body>
+<body onload="loadCss()">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tab">
     <header class="mdl-layout__header mdl-layout__header--scroll">
         <div class="mdl-layout__header-row">
@@ -105,20 +105,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function changeCSS(cssFile, cssLinkIndex) {
 
-        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-        var newlink = document.createElement("link");
-        newlink.setAttribute("rel", "stylesheet");
-        newlink.setAttribute("type", "text/css");
-        newlink.setAttribute("href", cssFile);
-
-        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-
-    }
-</script>
 
 <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__left-section">

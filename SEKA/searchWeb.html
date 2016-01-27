@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <script src="indexJS.js"></script>
     <link rel="stylesheet" type="text/css"
           href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.yellow-light_green.min.css"/>
     <!-- Material Design icon font -->
@@ -16,6 +17,7 @@
         <div class="mdl-layout__header-row">
             <a href="indexWeb.html"> <img src="engine-coolant-cap.png" style="width: 80px;height: 80px"></a>
             <span class="mdl-layout-title">SEKA</span>
+
             <div class="mdl-layout-spacer"></div>
 
             <div class="search">
@@ -24,8 +26,8 @@
                         <input class="mdl-textfield__input" type="text" id="sample1">
                         <label class="mdl-textfield__label" for="sample1">Search </label>
                     </div>
-                     <label class="mdl-button mdl-js-button mdl-button--icon">
-                         <i class="material-icons">search</i>
+                    <label class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">search</i>
                     </label>
 
                 </form>
@@ -55,7 +57,8 @@
 
                     <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
                         for="demo-menu-lower-left1">
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);" class="mdl-menu__item">
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);"
+                            class="mdl-menu__item">
                             <a> Default</a>
 
                         </li>
@@ -63,7 +66,8 @@
                             class="mdl-menu__item">
                             <a>Theme 1</a>
                         </li>
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_orange-light_green.min.css',0);" class="mdl-menu__item">
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_orange-light_green.min.css',0);"
+                            class="mdl-menu__item">
                             <a>Theme 2</a>
                         </li>
                     </ul>
@@ -191,7 +195,7 @@
                     </div>
                 </div>
             </div>
-            <div id="three" style="height:100px;float:left;padding-left: 50px;" >
+            <div id="three" style="height:100px;float:left;padding-left: 50px;">
                 <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="margin-bottom: 50px">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Welcome</h2>
@@ -212,7 +216,7 @@
                     </div>
                 </div>
 
-                <div class="demo-card-wide mdl-card mdl-shadow--2dp" >
+                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">Welcome</h2>
                     </div>
@@ -237,20 +241,5 @@
     </div>
 
 </div>
-<script type="text/javascript">
-    function changeCSS(cssFile, cssLinkIndex) {
-
-        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-        var newlink = document.createElement("link");
-        newlink.setAttribute("rel", "stylesheet");
-        newlink.setAttribute("type", "text/css");
-        newlink.setAttribute("href", cssFile);
-
-        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-
-    }
-</script>
-
 </body>
 </html>

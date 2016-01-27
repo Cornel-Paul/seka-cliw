@@ -7,16 +7,44 @@
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link rel="stylesheet" type="text/css" href="Web.css">
-    <title>SEKA</title>
+    <link rel="stylesheet" type="text/css" href="Search.css">
+    <title>Results</title>
 </head>
 <body>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tab">
-    <header class="mdl-layout__header mdl-layout__header--scroll">
+    <header class="mdl-layout__header--transparent mdl-layout__header--scroll" style="height: 80px">
         <div class="mdl-layout__header-row">
             <a href="indexWeb.html"> <img src="engine-coolant-cap.png" style="width: 80px;height: 80px"></a>
             <span class="mdl-layout-title">SEKA</span>
+            <div class="mdl-layout-spacer"></div>
 
+            <div class="search">
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="sample1">
+                        <label class="mdl-textfield__label" for="sample1">Search </label>
+                    </div>
+                    <label class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">search</i>
+                    </label>
+                </form>
+                <div class="option">
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                        <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+                        <span class="mdl-radio__label">Web</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                        <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+                        <span class="mdl-radio__label">Images</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                        <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
+                        <span class="mdl-radio__label">Videos</span>
+                    </label>
+
+                </div>
+
+            </div>
             <div class="mdl-layout-spacer"></div>
             <button id="demo-menu-lower-left1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Themes
@@ -73,58 +101,5 @@
         </div>
     </header>
 </div>
-<div class="main">
-    <div class="search">
-        <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="sample1">
-                <label class="mdl-textfield__label" for="sample1">Search </label>
-            </div>
-            <label class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">search</i>
-            </label>
-        </form>
-        <div class="option">
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
-                <span class="mdl-radio__label">Web</span>
-            </label>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
-                <span class="mdl-radio__label">Images</span>
-            </label>
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="1" checked>
-                <span class="mdl-radio__label">Videos</span>
-            </label>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    function changeCSS(cssFile, cssLinkIndex) {
-
-        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-        var newlink = document.createElement("link");
-        newlink.setAttribute("rel", "stylesheet");
-        newlink.setAttribute("type", "text/css");
-        newlink.setAttribute("href", cssFile);
-
-        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-    }
-</script>
-<footer class="mdl-mini-footer">
-    <div class="mdl-mini-footer__left-section">
-        <div class="mdl-logo">Descriptie</div>
-        <ul class="mdl-mini-footer__link-list">
-            <li>
-                <a href="https://google.ro">Ro</a>
-            </li>
-            <li>
-                <a href="https://google.com">Com</a>
-            </li>
-        </ul>
-    </div>
-</footer>
 </body>
 </html>

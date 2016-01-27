@@ -3,22 +3,12 @@
 <head>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <link rel="stylesheet" type="text/css"
-          href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css"/>
-    <script type="text/javascript">
-        function changeCSS(cssFile, cssLinkIndex) {
+          href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.yellow-light_green.min.css"/>
 
-            var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
-
-            var newlink = document.createElement("link");
-            newlink.setAttribute("rel", "stylesheet");
-            newlink.setAttribute("type", "text/css");
-            newlink.setAttribute("href", cssFile);
-
-            document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
-        }
-    </script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" type="text/css" href="Web.css">
     <title>SEKA</title>
 </head>
 <body>
@@ -26,6 +16,9 @@
             mdl-layout--fixed-tab">
     <header class="mdl-layout__header mdl-layout__header--scroll">
         <div class="mdl-layout__header-row">
+            <a href="indexWeb.html"> <img src="engine-coolant-cap.png" style="width: 80px;height: 80px"></a>
+            <span class="mdl-layout-title">SEKA</span>
+
             <div class="mdl-layout-spacer"></div>
             <button id="demo-menu-lower-left1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Themes
@@ -35,8 +28,12 @@
 
                     <ul class="mdl-menu mdl-menu--bottom-right   mdl-js-menu mdl-js-ripple-effect"
                         for="demo-menu-lower-left1">
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);" class="mdl-menu__item">Default</li>
-                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);" class="mdl-menu__item">Theme 1</li>
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);"
+                            class="mdl-menu__item">Default
+                        </li>
+                        <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);"
+                            class="mdl-menu__item">Theme 1
+                        </li>
                         <li id="theme2" class="mdl-menu__item">Theme 2</li>
                     </ul>
                 </a>
@@ -55,6 +52,7 @@
                                 <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
                                 <span class="mdl-checkbox__label">DuckDuckGo</span>
                             </label>
+
                         </li>
                         <li>
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
@@ -77,5 +75,44 @@
         </div>
     </header>
 </div>
+<div class="main">
+    <div class="search">
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label class="mdl-textfield__label" for="sample1">Search </label>
+            </div>
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                <i class="material-icons">search</i>
+            </label>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function changeCSS(cssFile, cssLinkIndex) {
+
+        var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
+
+        var newlink = document.createElement("link");
+        newlink.setAttribute("rel", "stylesheet");
+        newlink.setAttribute("type", "text/css");
+        newlink.setAttribute("href", cssFile);
+
+        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+    }
+</script>
+<footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo">Descriptie</div>
+        <ul class="mdl-mini-footer__link-list">
+            <li>
+                <a href="https://google.ro">Help</a>
+            </li>
+            <li>
+                <a href="#">Privacy & Terms</a>
+            </li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>

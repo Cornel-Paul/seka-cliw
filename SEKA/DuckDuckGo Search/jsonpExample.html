@@ -1,0 +1,21 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div id = 'twitterFeed'></div>
+        <script>
+        function myCallback(dataWeGotViaJsonp){
+            var text = '';
+            var len = dataWeGotViaJsonp.RelatedTopics.length;
+            for(var i=0;i<len;i++){
+                twitterEntry = dataWeGotViaJsonp.RelatedTopics[i];
+                text += '<p>' + twitterEntry['Result'] + '</p>'
+            }
+            document.getElementById('twitterFeed').innerHTML = text;
+        }
+        </script>
+        <script type="text/javascript" src="http://api.duckduckgo.com/?q=messi&format=json&pretty=1&callback=myCallback"></script>
+    </body>
+</html>
+
+http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=hagi

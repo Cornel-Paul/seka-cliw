@@ -51,6 +51,9 @@ function loadCss(){
     {
         alert(cssLinkIndex)
     }
+}
 
-
+function testResults(form) {
+    var TestVar = document.getElementById('sample1').value
+    alert("You typed: " + TestVar);
 }

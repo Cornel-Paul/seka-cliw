@@ -42,15 +42,27 @@ function loadCss(){
 
     if (cssFile != null || cssLinkIndex != null)
     {
-        alert(cssFile);
-        alert(cssLinkIndex);
+        //alert(cssFile);
+        //alert(cssLinkIndex);
         changeCSS(cssFile,cssLinkIndex)
 
     }
     else
     {
-        alert(cssLinkIndex)
+        //alert(cssLinkIndex)
     }
+}
+
+function parseURL(){
+	var url = window.location.href;
+	url = url.split("?")
+	var query = url[1].split("=")
+	duckSearch((query[1]))
+}
+
+function duckSearch(query){
+	var queryDuck = "http://api.duckduckgo.com/?q=" + query + "&format=json"
+	alert(queryDuck);
 }
 
 function testResults(form) {

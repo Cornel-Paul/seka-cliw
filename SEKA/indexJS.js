@@ -57,7 +57,63 @@ function parseURL(){
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
-	duckSearch((query[1]));
+	duckSearchVar2((query[1]));
+}
+
+function duckSearchVar2(query){
+	var queryDuck = "http://api.duckduckgo.com/?q=" + query + "&format=json&pretty=1&callback=myCallback"
+	var script = document.createElement('script');
+	script.setAttribute('src', queryDuck);
+	document.head.appendChild(script);
+	
+}
+
+function myCallback(dataWeGotViaJsonp){
+	/*
+	<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">Welcome</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					Mauris sagittis pellentesque lacus eleifend lacinia...
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						Get Started
+					</a>
+				</div>
+				<div class="mdl-card__menu">
+					<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+						<i class="material-icons">share</i>
+					</button>
+				</div>	
+			</div>
+	*/
+	
+	var newDiv = '';
+    var len = dataWeGotViaJsonp.RelatedTopics.length;
+	alert(len);
+    for(var i=0;i<len;i++){
+        duckEntry = dataWeGotViaJsonp.RelatedTopics[i];
+        newDiv += '<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">' + 
+				  '		<div class="mdl-card__title">' + 
+				  '     	<h2 class="mdl-card__title-text">DuckDuckGo</h2>' +
+				  '     </div>' +
+				  '     <div class="mdl-card__supporting-text">' + duckEntry["Text"] + 
+				  '     </div>' + 
+				  '     <div class="mdl-card__actions mdl-card--border">' + 
+				  '	         <a href=' + duckEntry["FirstURL"] + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
+				  '	         </a>' + 
+				  '     </div>' + 
+				  '     <div class="mdl-card__menu">' + 
+			      '			<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">' + 
+				  '				<i class="material-icons">share</i>' + 
+				  '     	</button>' + 
+				  '     </div>' + 	
+			      '</div>'
+        }
+    document.getElementById('column').innerHTML = newDiv;
 }
 
 function duckSearch(query){
@@ -70,7 +126,7 @@ function duckSearch(query){
 	xmlhttp.send();
 	
 	xmlhttp.addEventListener("readystatechange", processRequest(xmlhttp), false);
-	
+	alert(queryDuck)
 	//xmlhttp.onreadystatechange = processRequest(xmlhttp);
 	/*xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

@@ -106,7 +106,7 @@ function myCallback(dataWeGotViaJsonp){
 			for(var j=0;j<topicsLen;j++){
 				body = addNewDiv(body, topic[j]);
 			}
-			alert(topicsLen);
+			//alert(topicsLen);
 		}
         }
     document.getElementById('column').innerHTML = body;

@@ -61,7 +61,7 @@ function parseURL(){
 }
 
 function duckSearchVar2(query){
-	var queryDuck = "http://api.duckduckgo.com/?q=" + query + "&format=json&pretty=1&callback=myCallback"
+	var queryDuck = "https://api.duckduckgo.com/?q=" + query + "&format=json&pretty=1&callback=myCallback"
 	var script = document.createElement('script');
 	script.setAttribute('src', queryDuck);
 	document.head.appendChild(script);

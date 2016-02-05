@@ -91,29 +91,45 @@ function myCallback(dataWeGotViaJsonp){
 			</div>
 	*/
 	
-	var newDiv = '';
+	var body = '';
     var len = dataWeGotViaJsonp.RelatedTopics.length;
 	alert(len);
     for(var i=0;i<len;i++){
         duckEntry = dataWeGotViaJsonp.RelatedTopics[i];
-        newDiv += '<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">' + 
-				  '		<div class="mdl-card__title">' + 
-				  '     	<h2 class="mdl-card__title-text">DuckDuckGo</h2>' +
-				  '     </div>' +
-				  '     <div class="mdl-card__supporting-text">' + duckEntry["Text"] + 
-				  '     </div>' + 
-				  '     <div class="mdl-card__actions mdl-card--border">' + 
-				  '	         <a href=' + duckEntry["FirstURL"] + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
-				  '	         </a>' + 
-				  '     </div>' + 
-				  '     <div class="mdl-card__menu">' + 
-			      '			<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">' + 
-				  '				<i class="material-icons">share</i>' + 
-				  '     	</button>' + 
-				  '     </div>' + 	
-			      '</div>'
+		//typeof yourvar != 'undefined'
+		if (duckEntry["Topics"] == null) {
+			body = addNewDiv(body, duckEntry)
+		} else {
+			//alert("am gasit Topics!");
+			var topicsLen = duckEntry["Topics"].length;
+			var topic = duckEntry["Topics"];
+			for(var j=0;j<topicsLen;j++){
+				body = addNewDiv(body, topic[j]);
+			}
+			alert(topicsLen);
+		}
         }
-    document.getElementById('column').innerHTML = newDiv;
+    document.getElementById('column').innerHTML = body;
+}
+
+function addNewDiv(currentBody, newDuckEntry){
+	currentBody += '<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">' + 
+					  '		<div class="mdl-card__title">' + 
+					  '     	<h2 class="mdl-card__title-text">DuckDuckGo</h2>' +
+					  '     </div>' +
+					  '     <div class="mdl-card__supporting-text">' + newDuckEntry["Text"] + 
+					  '     </div>' + 
+					  '     <div class="mdl-card__actions mdl-card--border">' + 
+					  '	         <a href=' + newDuckEntry["FirstURL"] + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
+					  '	         </a>' + 
+					  '     </div>' + 
+					  '     <div class="mdl-card__menu">' + 
+					  '			<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">' + 
+					  '				<i class="material-icons">share</i>' + 
+					  '     	</button>' + 
+					  '     </div>' + 	
+					  '</div>';
+	return currentBody;
 }
 
 function duckSearch(query){

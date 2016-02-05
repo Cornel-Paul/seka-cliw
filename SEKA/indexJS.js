@@ -93,7 +93,7 @@ function myCallback(dataWeGotViaJsonp){
 	
 	var body = '';
     var len = dataWeGotViaJsonp.RelatedTopics.length;
-	alert(len);
+	//alert(len);
     for(var i=0;i<len;i++){
         duckEntry = dataWeGotViaJsonp.RelatedTopics[i];
 		//typeof yourvar != 'undefined'
@@ -109,7 +109,7 @@ function myCallback(dataWeGotViaJsonp){
 			//alert(topicsLen);
 		}
         }
-    document.getElementById('column').innerHTML = body;
+    document.getElementById('column').innerHTML += body;
 }
 
 function addNewDiv(currentBody, newDuckEntry){
@@ -124,9 +124,9 @@ function addNewDiv(currentBody, newDuckEntry){
 					  '	         </a>' + 
 					  '     </div>' + 
 					  '     <div class="mdl-card__menu">' + 
-					  '			<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">' + 
-					  '				<i class="material-icons">share</i>' + 
-					  '     	</button>' + 
+					  '			<a data-pocket-align="right" data-save-url=' + newDuckEntry["FirstURL"] + ' data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>'+
+					  '         <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>' +
+					  '			<p> gfdgdf </p>' +
 					  '     </div>' + 	
 					  '</div>';
 	return currentBody;

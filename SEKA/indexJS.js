@@ -1,5 +1,6 @@
 /**
  */
+ 
 function changeCSS(cssFile, cssLinkIndex) {
 
     SetCookie("cssFile",cssFile,5);
@@ -34,6 +35,10 @@ function ReadCookie(cookieName) {
 }
 
 function loadCss(){
+	localStorage.setItem("ddgCheckBox", "true");
+	localStorage.setItem("facebookCheckBox", "true");
+	localStorage.setItem("twitterCheckBox", "true");
+	
     var cssFile = ReadCookie("cssFile");
     var cssLinkIndex = ReadCookie("cssLinkIndex");
 
@@ -120,14 +125,48 @@ function loadCss(){
   
 ///////facebook
 
+function ddgCheckBoxHandler(){
+	if (document.getElementById("checkbox-1").checked == true){
+		//alert("trutruesda");
+		localStorage.setItem("ddgCheckBox", "true");
+	} else {
+		//alert("falsefalse");
+		localStorage.setItem("ddgCheckBox", "false");
+	}
+
+}
+
+function facebookCheckBoxHandler(){
+	if (document.getElementById("checkbox-2").checked == true){
+		localStorage.setItem("facebookCheckBox", "true");
+	} else {
+		localStorage.setItem("facebookCheckBox", "false");
+	}
+}
+
+function twitterCheckBoxHandler(){
+	if (document.getElementById("checkbox-3").checked == true){
+		localStorage.setItem("twitterCheckBox", "true");
+	} else {
+		localStorage.setItem("twitterCheckBox", "false");
+	}
+}
+
+
 function parseURL(){
+	alert("ddgCheckBox = " + localStorage.getItem("ddgCheckBox"));
+	alert("facebookCheckBox = " + localStorage.getItem("facebookCheckBox"));
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
-	duckSearchVar2((query[1]));
-	startFbSearch(query[1]);
 	
+	if (localStorage.getItem("ddgCheckBox") == "true"){
+		duckSearchVar2((query[1]));
+	}
 	
+	if (localStorage.getItem("facebookCheckBox") == "true"){
+		startFbSearch(query[1]);
+	}
 }
 
 function duckSearchVar2(query){

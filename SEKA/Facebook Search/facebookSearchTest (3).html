@@ -58,6 +58,16 @@
     function (response) {
       if (response && !response.error) {
         console.log(response);
+		 var len = response.data.length;
+		 alert(len);
+		 var text = '';
+		 for(var i=0;i<len;i++){
+                facebookEntry = response.data[i];
+				console.log("concon: " + response[i]);
+				//<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
+                text += '<a href=https://www.facebook.com/' + facebookEntry['id'] + '> ' + facebookEntry["name"] + '</a>'
+            }
+            document.getElementById('facebookFeed').innerHTML = text;
       }
     }
 );
@@ -67,9 +77,8 @@
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
-
-<div id="status">
-</div>
+<div id="facebookFeed"></div>
+<div id="status"></div>
 
 </body>
 </html>

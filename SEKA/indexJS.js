@@ -1,9 +1,4 @@
 /**
- * Created with JetBrains PhpStorm.
- * User: alexa
- * Date: 1/24/16
- * Time: 6:58 PM
- * To change this template use File | Settings | File Templates.
  */
 function changeCSS(cssFile, cssLinkIndex) {
 
@@ -27,6 +22,7 @@ function SetCookie(cookieName,cookieValue,nDays) {
     document.cookie = cookieName+"="+escape(cookieValue)
         + ";expires="+expire.toGMTString();
 }
+
 function ReadCookie(cookieName) {
     var theCookie=" "+document.cookie;
     var ind=theCookie.indexOf(" "+cookieName+"=");
@@ -36,6 +32,7 @@ function ReadCookie(cookieName) {
     if (ind1==-1) ind1=theCookie.length;
     return unescape(theCookie.substring(ind+cookieName.length+2,ind1));
 }
+
 function loadCss(){
     var cssFile = ReadCookie("cssFile");
     var cssLinkIndex = ReadCookie("cssLinkIndex");
@@ -53,11 +50,85 @@ function loadCss(){
     }
 }
 
+//////facebook
+
+  function statusChangeCallback(response, query) {
+    console.log('statusChangeCallback');
+    console.log(response);
+	alert("statusChangeCallback: "+query);
+    if (response.status === 'connected') {
+      testAPI(query);
+    } else if (response.status === 'not_authorized') {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response, query);
+    });
+  }
+
+  function startFbSearch(query) {
+  FB.init({
+    appId      : '1106827712685541',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response, query);
+  });
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function testAPI(query) {
+    console.log('Welcome!  Fetching your information.... ');
+	var body = "";
+	var url = "/search?q="+ query +"&type=page&access_token=";
+	FB.api(url,
+    function (response) {
+      if (response && !response.error) {
+        console.log(response);
+		 var len = response.data.length;
+		 var text = '';
+		 for(var i=0;i<len;i++){
+                facebookEntry = response.data[i];
+				console.log("concon: " + response[i]);
+                //text += '<a href=https://www.facebook.com/' + facebookEntry['id'] + '> ' + facebookEntry["name"] + '</a>'
+				body = addNewDiv(body, facebookEntry["name"], "https://www.facebook.com/"+facebookEntry["id"], "Facebook");
+            }
+            document.getElementById('column').innerHTML += body;
+      }
+    }
+);
+
+  }
+  
+///////facebook
+
 function parseURL(){
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
 	duckSearchVar2((query[1]));
+	startFbSearch(query[1]);
+	
+	
 }
 
 function duckSearchVar2(query){
@@ -98,13 +169,13 @@ function myCallback(dataWeGotViaJsonp){
         duckEntry = dataWeGotViaJsonp.RelatedTopics[i];
 		//typeof yourvar != 'undefined'
 		if (duckEntry["Topics"] == null) {
-			body = addNewDiv(body, duckEntry)
+			body = addNewDiv(body, duckEntry["Text"], duckEntry["FirstURL"], "DuckDuckGo")
 		} else {
 			//alert("am gasit Topics!");
 			var topicsLen = duckEntry["Topics"].length;
 			var topic = duckEntry["Topics"];
 			for(var j=0;j<topicsLen;j++){
-				body = addNewDiv(body, topic[j]);
+				body = addNewDiv(body, topic[j]["Text"], topic[j]["FirstURL"], "DuckDuckGo");
 			}
 			//alert(topicsLen);
 		}
@@ -112,19 +183,19 @@ function myCallback(dataWeGotViaJsonp){
     document.getElementById('column').innerHTML += body;
 }
 
-function addNewDiv(currentBody, newDuckEntry){
+function addNewDiv(currentBody, text, url, searchEngine){
 	currentBody += '<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">' + 
 					  '		<div class="mdl-card__title">' + 
-					  '     	<h2 class="mdl-card__title-text">DuckDuckGo</h2>' +
+					  '     	<h2 class="mdl-card__title-text">' + searchEngine + '</h2>' +
 					  '     </div>' +
-					  '     <div class="mdl-card__supporting-text">' + newDuckEntry["Text"] + 
+					  '     <div class="mdl-card__supporting-text">' + text + 
 					  '     </div>' + 
 					  '     <div class="mdl-card__actions mdl-card--border">' + 
-					  '	         <a href=' + newDuckEntry["FirstURL"] + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
+					  '	         <a href=' + url + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
 					  '	         </a>' + 
 					  '     </div>' + 
 					  '     <div class="mdl-card__menu">' + 
-					  '			<a data-pocket-align="right" data-save-url=' + newDuckEntry["FirstURL"] + ' data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>'+
+					  '			<a data-pocket-align="right" data-save-url=' + url + ' data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>'+
 					  '         <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>' +
 					  '			<p> gfdgdf </p>' +
 					  '     </div>' + 	
@@ -133,7 +204,7 @@ function addNewDiv(currentBody, newDuckEntry){
 }
 
 function duckSearch(query){
-	var queryDuck = "http://api.duckduckgo.com/?q=" + query;
+	var queryDuck = "http://api.duckduckgo.com/?q=" + query + "&format=json";
 	
 	
 	var xmlhttp = new XMLHttpRequest();
@@ -159,8 +230,6 @@ function processRequest(xmlhttp){
 		alert("OKOKOK!");
 	}
 }
-
-
 
 function testResults(form) {
     var TestVar = document.getElementById('sample1').value

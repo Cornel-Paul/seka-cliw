@@ -11,13 +11,12 @@
     console.log(response);
 
     if (response.status === 'connected') {
-      testAPI();
+      document.location.href = "index.html";
     } else if (response.status === 'not_authorized') {
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
     } else {
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML = 'Please log in if you want to search on Facebook';
     }
   }
 
@@ -50,29 +49,6 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-	
-	var url = "/search?q=Bamboo&type=page&access_token="
-	FB.api(url,
-    function (response) {
-      if (response && !response.error) {
-        console.log(response);
-		 var len = response.data.length;
-		 alert(len);
-		 var text = '';
-		 for(var i=0;i<len;i++){
-                facebookEntry = response.data[i];
-				console.log("concon: " + response[i]);
-				//<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
-                text += '<a href=https://www.facebook.com/' + facebookEntry['id'] + '> ' + facebookEntry["name"] + '</a>'
-            }
-            document.getElementById('facebookFeed').innerHTML = text;
-      }
-    }
-);
-
-  }
 </script>
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">

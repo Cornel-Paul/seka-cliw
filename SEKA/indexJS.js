@@ -155,7 +155,8 @@ function parseURL(){
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
-	document.getElementById("sample1").value = query[1];
+	document.getElementById("label1").value = "";
+	document.getElementById("sample1").value = query[1].replace("+", " ");
 	
 	if (localStorage.getItem("ddgCheckBox") == "true"){
 		duckSearchVar2((query[1]));

@@ -2,9 +2,7 @@ body {
 	background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 #pins-wrapper {
-	width: 80%;
-	margin: 15.5em;
-	margin-bottom: 0;
+	margin: 9.5em;
 	margin-top: 8.5em;
 	height: 100%;
 	position: absolute;

@@ -155,6 +155,7 @@ function parseURL(){
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
+	document.getElementById("sample1").value = query[1];
 	
 	if (localStorage.getItem("ddgCheckBox") == "true"){
 		duckSearchVar2((query[1]));
@@ -263,6 +264,23 @@ function addNewDivToBody(text, url, searchEngine ){
 	divPin.appendChild(divInner4);
 	var column = document.getElementById('column');
 	column.appendChild(divPin);
+}
+
+function searchFormHandler(){
+	var query = document.getElementById("sample1").value;
+	alert(query);
+	var divColumn = document.getElementById("column");
+	while(divColumn.hasChildNodes()){
+		divColumn.removeChild(divColumn.firstChild);
+	}
+	
+	if (localStorage.getItem("ddgCheckBox") == "true"){
+		duckSearchVar2(query);
+	}
+	
+	if (localStorage.getItem("facebookCheckBox") == "true"){
+		startFbSearch(query);
+	}
 }
 
 /*

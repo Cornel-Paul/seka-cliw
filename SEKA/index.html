@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <script src="indexJS.js"></script>
     <link rel="stylesheet"
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700" type="text/css">
     <link rel="stylesheet" type="text/css" href="Web.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <title>SEKA</title>
 </head>
-<body onload="loadCss();">
+<body onload="loadCss(); getLocation();">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tab">
     <header class="mdl-layout__header mdl-layout__header--scroll">
         <div class="mdl-layout__header-row">
@@ -86,6 +88,15 @@
     </header>
 </div>
 <div class="main">
+    <div id="forecast" style="float: right; padding-top: 45px; padding-right: 60px;">
+        <h1 style="font-size: 14px">Weather at <span id="location"> </span></h1>
+        <div id="imgdiv">
+            <img id="img" src=""/>
+        </div>
+        <p style="font-size: 10px">It is currently <span id="temp"> </span>&degC with <span id="desc"> </span></p>
+        <p style="font-size: 10px">Wind: <span id="wind"></span></p>
+    </div>
+    <script src="weather.js"></script>
     <div class="search">
 
         <form name = "searchForm" method="GET" action="pinterestStyle.html">
@@ -116,18 +127,6 @@
 </div>
 
 
-<footer class="mdl-mini-footer">
-    <div class="mdl-mini-footer__left-section">
-        <div class="mdl-logo">Descriptie</div>
-        <ul class="mdl-mini-footer__link-list">
-            <li>
-                <a href="https://google.ro">Ro</a>
-            </li>
-            <li>
-                <a href="https://google.com">Com</a>
-            </li>
-        </ul>
-    </div>
-</footer>
+
 </body>
 </html>

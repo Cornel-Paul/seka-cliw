@@ -2,59 +2,38 @@ body {
 	background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 #pins-wrapper {
-	width: 90%;
-	max-width: 1100px;
-	min-width: 800px;
-	margin: 50px auto;
+	width: 80%;
+	margin: 15.5em;
+	margin-bottom: 0;
+	margin-top: 0;
 	height: 100%;
+	position: absolute;
 }
 
 #pin{
-	margin: 0 2px 15px;
-	padding: 15px;
-	padding-bottom: 5px;
+	margin: 15px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 	display: inline-block;
 	
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
-#columns {
-	-webkit-column-count: 3;
-	-webkit-column-gap: 10px;
-	-webkit-column-fill: auto;
-	
-	-moz-column-count: 3;
-	-moz-column-gap: 10px;
-	-moz-column-fill: auto;
-	
-	column-count: 3;
-	column-gap: 15px;
-	column-fill: auto;
-	
-	overflow: hidden; /* fix for Firefox */
-	break-inside: avoid-column;
+
+#column{
 	-webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+	overflow:hidden;
+
 }
 
 
-@media (min-width: 960px) {
-	#columns {
-		-webkit-column-count: 4;
-		-moz-column-count: 4;
-		column-count: 4;
-	}
-}
-
-@media (min-width: 1100px) {
-	#columns {
-		-webkit-column-count: 5;
-		-moz-column-count: 5;
-		column-count: 5;
-	}
-}
-
-#columns:hover #pin:not(:hover) {
+#column:hover #pin:not(:hover) {
 	opacity: 0.4;
 }

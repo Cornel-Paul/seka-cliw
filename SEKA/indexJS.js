@@ -156,12 +156,12 @@ function parseURL(){
 	url = url.split("?");
 	var query = url[1].split("=");
 	
-	if (localStorage.getItem("facebookCheckBox") == "true"){
-		startFbSearch(query[1]);
-	}
-	
 	if (localStorage.getItem("ddgCheckBox") == "true"){
 		duckSearchVar2((query[1]));
+	}
+	
+	if (localStorage.getItem("facebookCheckBox") == "true"){
+		startFbSearch(query[1]);
 	}
 	
 }

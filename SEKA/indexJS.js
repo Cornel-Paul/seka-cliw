@@ -60,7 +60,7 @@ function loadCss(){
   function statusChangeCallback(response, query) {
     console.log('statusChangeCallback');
     console.log(response);
-	alert("statusChangeCallback: "+query);
+	//alert("statusChangeCallback: "+query);
     if (response.status === 'connected') {
       testAPI(query);
     } else if (response.status === 'not_authorized') {
@@ -109,14 +109,10 @@ function loadCss(){
       if (response && !response.error) {
         console.log(response);
 		 var len = response.data.length;
-		 var text = '';
 		 for(var i=0;i<len;i++){
                 facebookEntry = response.data[i];
-				console.log("concon: " + response[i]);
-                //text += '<a href=https://www.facebook.com/' + facebookEntry['id'] + '> ' + facebookEntry["name"] + '</a>'
-				body = addNewDiv(body, facebookEntry["name"], "https://www.facebook.com/"+facebookEntry["id"], "Facebook");
+				addNewDivToBody(facebookEntry["name"], "https://www.facebook.com/"+facebookEntry["id"], "Facebook");
             }
-            document.getElementById('column').innerHTML += body;
       }
     }
 );
@@ -154,23 +150,24 @@ function twitterCheckBoxHandler(){
 
 
 function parseURL(){
-	alert("ddgCheckBox = " + localStorage.getItem("ddgCheckBox"));
-	alert("facebookCheckBox = " + localStorage.getItem("facebookCheckBox"));
+	//alert("ddgCheckBox = " + localStorage.getItem("ddgCheckBox"));
+	//alert("facebookCheckBox = " + localStorage.getItem("facebookCheckBox"));
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
+	
+	if (localStorage.getItem("facebookCheckBox") == "true"){
+		startFbSearch(query[1]);
+	}
 	
 	if (localStorage.getItem("ddgCheckBox") == "true"){
 		duckSearchVar2((query[1]));
 	}
 	
-	if (localStorage.getItem("facebookCheckBox") == "true"){
-		startFbSearch(query[1]);
-	}
 }
 
 function duckSearchVar2(query){
-	var queryDuck = "https://api.duckduckgo.com/?q=" + query + "&format=json&pretty=1&callback=myCallback"
+	var queryDuck = "https://api.duckduckgo.com/?q=" + query + "&format=json&pretty=1&callback=myCallback";
 	var script = document.createElement('script');
 	script.setAttribute('src', queryDuck);
 	document.head.appendChild(script);
@@ -178,69 +175,97 @@ function duckSearchVar2(query){
 }
 
 function myCallback(dataWeGotViaJsonp){
-	/*
-	<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">
-				<div class="mdl-card__title">
-					<h2 class="mdl-card__title-text">Welcome</h2>
-				</div>
-				<div class="mdl-card__supporting-text">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					Mauris sagittis pellentesque lacus eleifend lacinia...
-				</div>
-				<div class="mdl-card__actions mdl-card--border">
-					<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-						Get Started
-					</a>
-				</div>
-				<div class="mdl-card__menu">
-					<button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-						<i class="material-icons">share</i>
-					</button>
-				</div>	
-			</div>
-	*/
-	
-	var body = '';
     var len = dataWeGotViaJsonp.RelatedTopics.length;
-	//alert(len);
     for(var i=0;i<len;i++){
         duckEntry = dataWeGotViaJsonp.RelatedTopics[i];
-		//typeof yourvar != 'undefined'
-		if (duckEntry["Topics"] == null) {
-			body = addNewDiv(body, duckEntry["Text"], duckEntry["FirstURL"], "DuckDuckGo")
-		} else {
-			//alert("am gasit Topics!");
+		if (duckEntry["Topics"] == null) 
+		{
+			addNewDivToBody(duckEntry["Text"], duckEntry["FirstURL"], "DuckDuckGo");
+		} 
+		else 
+		{
 			var topicsLen = duckEntry["Topics"].length;
 			var topic = duckEntry["Topics"];
 			for(var j=0;j<topicsLen;j++){
-				body = addNewDiv(body, topic[j]["Text"], topic[j]["FirstURL"], "DuckDuckGo");
-			}
-			//alert(topicsLen);
+				addNewDivToBody(topic[j]["Text"], topic[j]["FirstURL"], "DuckDuckGo");
 		}
-        }
-    document.getElementById('column').innerHTML += body;
+		}
+    }
 }
 
-function addNewDiv(currentBody, text, url, searchEngine){
-	currentBody += '<div id="pin" class="demo-card-wide mdl-card mdl-shadow--2dp">' + 
-					  '		<div class="mdl-card__title">' + 
-					  '     	<h2 class="mdl-card__title-text">' + searchEngine + '</h2>' +
-					  '     </div>' +
-					  '     <div class="mdl-card__supporting-text">' + text + 
-					  '     </div>' + 
-					  '     <div class="mdl-card__actions mdl-card--border">' + 
-					  '	         <a href=' + url + ' class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View resource' + 
-					  '	         </a>' + 
-					  '     </div>' + 
-					  '     <div class="mdl-card__menu">' + 
-					  '			<a data-pocket-align="right" data-save-url=' + url + ' data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>'+
-					  '         <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>' +
-					  '			<p> gfdgdf </p>' +
-					  '     </div>' + 	
-					  '</div>';
-	return currentBody;
+
+function addNewDivToBody(text, url, searchEngine ){
+	//div pin
+	var divPin = document.createElement('div');
+	var attID = document.createAttribute("id");       
+	attID.value = "pin";                           
+	divPin.setAttributeNode(attID); 
+	var attClass = document.createAttribute("class");       
+	attClass.value = "demo-card-wide mdl-card mdl-shadow--2dp";                           
+	divPin.setAttributeNode(attClass);
+	
+	//div inner1
+	var divInner1 = document.createElement('div');
+	var attClass = document.createAttribute("class");       
+	attClass.value = "mdl-card__title";                           
+	divInner1.setAttributeNode(attClass);
+	var h2 = document.createElement('h2');
+	var attClass = document.createAttribute("class");       
+	attClass.value = "mdl-card__title-text";                           
+	h2.setAttributeNode(attClass);
+	var txt = document.createTextNode(searchEngine);     // Create a text node
+	h2.appendChild(txt);     
+	divInner1.appendChild(h2);
+	
+	//div inner2
+	var divInner2 = document.createElement('div');
+	var attClass = document.createAttribute("class");       
+	attClass.value = "mdl-card__supporting-text";                           
+	divInner2.setAttributeNode(attClass);
+	var txt = document.createTextNode(text);     // Create a text node
+	divInner2.appendChild(txt);     
+	
+	//div inner3
+	var divInner3 = document.createElement('div');
+	var attClass = document.createAttribute("class");       
+	attClass.value = "mdl-card__actions mdl-card--border";                           
+	divInner3.setAttributeNode(attClass);
+	
+	var aElement = document.createElement('a');
+	var attHref = document.createAttribute("href");       
+	attHref.value = url; 
+	aElement.setAttributeNode(attHref);
+	var attClass = document.createAttribute("class");
+	attClass.value = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect";
+	aElement.setAttributeNode(attClass);
+	var txt = document.createTextNode("View resource");     // Create a text node
+	aElement.appendChild(txt); 
+
+	divInner3.appendChild(aElement);
+	
+	//div inner4
+	var divInner4 = document.createElement('div');
+	
+	var attClass = document.createAttribute("class");       
+	attClass.value = "mdl-card__menu";                           
+	divInner4.setAttributeNode(attClass);
+	
+	divInner4.innerHTML = '<a data-pocket-align="right" data-save-url="'+ url +'" data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>';
+	
+	var script = document.createElement('script');
+    script.type = 'text/javascript';
+	script.text = '(function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}})(document,"pocket-btn-js");';
+	divInner4.appendChild(script);
+	
+	divPin.appendChild(divInner1);
+	divPin.appendChild(divInner2);
+	divPin.appendChild(divInner3);
+	divPin.appendChild(divInner4);
+	var column = document.getElementById('column');
+	column.appendChild(divPin);
 }
 
+/*
 function duckSearch(query){
 	var queryDuck = "http://api.duckduckgo.com/?q=" + query + "&format=json";
 	
@@ -252,14 +277,6 @@ function duckSearch(query){
 	
 	xmlhttp.addEventListener("readystatechange", processRequest(xmlhttp), false);
 	alert(queryDuck)
-	//xmlhttp.onreadystatechange = processRequest(xmlhttp);
-	/*xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			var myArr = JSON.parse(xmlhttp.responseText);
-			processRequest(myArr);
-		}
-	};
-	*/
 }
 
 function processRequest(xmlhttp){
@@ -273,3 +290,4 @@ function testResults(form) {
     var TestVar = document.getElementById('sample1').value
     alert("You typed: " + TestVar);
 }
+*/

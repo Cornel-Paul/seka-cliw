@@ -44,14 +44,13 @@ function loadCss(){
 
     if (cssFile != null || cssLinkIndex != null)
     {
-        //alert(cssFile);
-        //alert(cssLinkIndex);
         changeCSS(cssFile,cssLinkIndex)
 
     }
     else
     {
-        //alert(cssLinkIndex)
+        alert('hello');
+        changeCSS("https://storage.googleapis.com/code.getmdl.io/1.0.6/material.yellow-light_blue.min.css",0)
     }
 }
 
@@ -155,8 +154,6 @@ function parseURL(){
 	var url = window.location.href;
 	url = url.split("?");
 	var query = url[1].split("=");
-	document.getElementById("label1").value = "";
-	document.getElementById("sample1").value = query[1].replace("+", " ");
 	
 	if (localStorage.getItem("ddgCheckBox") == "true"){
 		duckSearchVar2((query[1]));
@@ -265,23 +262,6 @@ function addNewDivToBody(text, url, searchEngine ){
 	divPin.appendChild(divInner4);
 	var column = document.getElementById('column');
 	column.appendChild(divPin);
-}
-
-function searchFormHandler(){
-	var query = document.getElementById("sample1").value;
-	alert(query);
-	var divColumn = document.getElementById("column");
-	while(divColumn.hasChildNodes()){
-		divColumn.removeChild(divColumn.firstChild);
-	}
-	
-	if (localStorage.getItem("ddgCheckBox") == "true"){
-		duckSearchVar2(query);
-	}
-	
-	if (localStorage.getItem("facebookCheckBox") == "true"){
-		startFbSearch(query);
-	}
 }
 
 /*

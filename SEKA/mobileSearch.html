@@ -1,0 +1,169 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" type="text/css" href="Mobile.css">
+    <title>SEKA Mobile</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://code.getmdl.io/1.1.1/material.min.js"></script>
+    <script src="indexJS.js"></script>
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+<body onload="parseURL();">
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="demo-header mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">SEKA</span>
+
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                    <i class="material-icons">search</i>
+                </label>
+
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search">
+                    <label class="mdl-textfield__label" for="search">Enter your query...</label>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="demo-drawer mdl-layout__drawer" >
+        <header class="demo-drawer-header" style="height: auto;">
+            <div class="demo-avatar-dropdown" style="width: auto; position: absolute">
+                <div class="mdl-layout-spacer"></div>
+                <span>Themes</span>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Themes</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.light_blue-light_green.min.css',0);"
+                        class="mdl-menu__item">
+                        <a> Default</a>
+
+                    </li>
+                    <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css',0);"
+                        class="mdl-menu__item">
+                        <a>Theme 1</a>
+                    </li>
+                    <li onclick="changeCSS('https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_orange-light_green.min.css',0);"
+                        class="mdl-menu__item">
+                        <a>Theme 2</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <header class="demo-drawer-header" style="height: auto;">
+            <div class="demo-avatar-dropdown" style="width: auto; position: absolute">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-layout-spacer"></div>
+                <span>Filters</span>
+                <button id="accbtn1" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Themes</span>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="accbtn1">
+                    <li class="mdl-menu__item">
+                        <a>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-1">
+                                <input onchange="ddgCheckBoxHandler()" type="checkbox" id="checkbox-1"
+                                       class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label" style="position: absolute">DuckDuckGo</span>
+                            </label>
+                        </a>
+                    </li>
+                    <li class="mdl-menu__item">
+                        <a>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-2">
+                                <input onchange="facebookCheckBoxHandler()" type="checkbox" id="checkbox-2"
+                                       class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label" style="position: absolute">Facebook</span>
+                            </label>
+                        </a>
+                    <li class="mdl-menu__item">
+                        <a>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                   for="checkbox-3">
+                                <input onchange="twitterCheckBoxHandler()" type="checkbox" id="checkbox-3"
+                                       class="mdl-checkbox__input" checked>
+                                <span class="mdl-checkbox__label" style="position: absolute">Twitter</span>
+                            </label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    </div>
+    <div class="results">
+
+        <div id="pins-wrapper">
+            <div id="column">
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

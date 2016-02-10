@@ -2,43 +2,59 @@ body {
 	background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 #pins-wrapper {
-	margin-left: auto;
-	margin-right: auto;
+	width: 90%;
+	max-width: 1100px;
+	min-width: 800px;
+	padding: 90px;
 	height: 100%;
-	position: absolute;
-	max-width: 100%;
-	text-align: center;
-	margin-top: 8.5em;
-	margin-bottom: 8.5em;
 }
 
 #pin{
-	margin: 15px;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 5px;
 	display: inline-block;
 	
 	-webkit-transition: all .2s ease;
 	-moz-transition: all .2s ease;
 	-o-transition: all .2s ease;
 	transition: all .2s ease;
+}
+#columns {
+	-webkit-column-count: 3;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
 	
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	text-align: initial;
-}
-
-#column{
+	-moz-column-count: 3;
+	-moz-column-gap: 10px;
+	-moz-column-fill: auto;
+	
+	column-count: 3;
+	column-gap: 15px;
+	column-fill: auto;
+	
+	overflow: hidden; /* fix for Firefox */
+	break-inside: avoid-column;
 	-webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-	overflow:hidden;
 }
 
-.mdl-card__actions{
-	text-align: center;
+
+@media (min-width: 960px) {
+	#columns {
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+	}
 }
 
-#column:hover #pin:not(:hover) {
+@media (min-width: 1100px) {
+	#columns {
+		-webkit-column-count: 5;
+		-moz-column-count: 5;
+		column-count: 5;
+	}
+}
+
+#columns:hover #pin:not(:hover) {
 	opacity: 0.4;
 }

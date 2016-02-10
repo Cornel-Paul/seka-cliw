@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700" type="text/css">
     <link rel="stylesheet" type="text/css" href="Web.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <title>SEKA</title>
 </head>
-<body onload="loadCss(); getLocation();">
+<body onload="loadCss(); getLocation(); ">
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tab">
     <header class="mdl-layout__header mdl-layout__header--scroll">
         <div class="mdl-layout__header-row">
@@ -125,7 +126,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        window.location = "mobile.html";
+    }
+</script>
 
 
 </body>
